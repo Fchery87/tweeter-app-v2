@@ -12,6 +12,10 @@ body {
     margin: 20px 0;
     text-align: center;
   }
+
+  .twitter-title {
+    color: #f95d9b;
+  }
   
   .container {
     max-width: 600px;
