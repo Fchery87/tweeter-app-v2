@@ -1,5 +1,5 @@
 body {
-    background-color: #39a0ca;
+    background-color: #00b7ff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +83,8 @@ body {
   }
   
   .logo {
-    width: 250px; /* Change the width as desired */
-    height: auto; /* Maintain aspect ratio */
+    padding-top: 10px;
+    width: 780px; 
+    height: auto; 
   }
   

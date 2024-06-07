@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import './App.css';
 import TweetsList from './components/TweetsList';
-import logo from './assets/silverback.png'; // Import the image
+import logo from './assets/silverback_top_banner.png'; // Import the image
 
 function App() {
   return (
