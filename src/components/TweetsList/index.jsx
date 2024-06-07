@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import Tweet from '../Tweet';
+import CreateTweetForm from '../CreateTweetForm';
+
 import { v4 as uuidv4 } from 'uuid';
 import { data } from '../../data/data';
-import styles from './TweetsList.module.css';
-
 
 import './TweetsList.module.css';
-import CreateTweetForm from '../CreateTweetForm';
 
 function TweetsList() {
   const [tweets, setTweets] = useState(data);
@@ -14,7 +13,7 @@ function TweetsList() {
   const addTweet = (newTweet) => {
     const tweetDoc = {
       content: newTweet,
-      username: 'abc123',
+      username: 'abe123',
       likes: 0,
       retweets: 0,
       timestamp: new Date(),
@@ -28,21 +27,63 @@ function TweetsList() {
     setTweets(tweets.filter((t) => t.id !== tweetId));
   };
 
+  const updateTweet = (tweetId, newTweetContent) => {
+    setTweets(
+      tweets.map((t) => {
+        if (t.id === tweetId) {
+          return {
+            ...t,
+            content: newTweetContent,
+          };
+        } else return t;
+      })
+    );
+  };
+
+  const handleLike = (tweetId) => {
+    setTweets(
+      tweets.map((t) => {
+        if (t.id === tweetId) {
+          return {
+            ...t,
+            likes: t.likes + 1,
+          };
+        } else return t;
+      })
+    );
+  };
+
+  const handleRetweet = (tweetId) => {
+    setTweets(
+      tweets.map((t) => {
+        if (t.id === tweetId) {
+          return {
+            ...t,
+            retweets: t.retweets + 1,
+          };
+        } else return t;
+      })
+    );
+  };
+
   return (
-    <div className={styles.mainContainer}>
-      <h2>Tweeter App</h2>
-  
+    <div className='mt-4'>
       <CreateTweetForm addTweet={addTweet} />
-  
+
       <section>
         {tweets.map((item) => (
-          <Tweet tweet={item} key={item.id} removeTweet={removeTweet} />
+          <Tweet
+            tweet={item}
+            key={item.id}
+            removeTweet={removeTweet}
+            updateTweet={updateTweet}
+            handleLike={handleLike}
+            handleRetweet={handleRetweet}
+          />
         ))}
       </section>
     </div>
   );
-  
 }
-
 
 export default TweetsList;
