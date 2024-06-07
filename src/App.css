@@ -12,10 +12,6 @@ body {
     margin: 20px 0;
     text-align: center;
   }
-
-  .twitter-title {
-    color: #f95d9b;
-  }
   
   .container {
     max-width: 600px;
@@ -84,5 +80,10 @@ body {
   
   .Modal_body button:hover {
     background-color: #f95d9b;
+  }
+  
+  .logo {
+    width: 250px; /* Change the width as desired */
+    height: auto; /* Maintain aspect ratio */
   }
   
