@@ -4,15 +4,18 @@ import { FaHeart } from 'react-icons/fa';
 import { LiaRetweetSolid } from 'react-icons/lia';
 import Button from 'react-bootstrap/Button';
 import UpdateTweetForm from '../UpdateTweetForm';
+import silverbackLogo from '../../assets/silverback.png'; // Import the image
 
 function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
   const [showModal, setShowModal] = useState(false);
+  const tweetImage = tweet.image === 'silverback' ? silverbackLogo : tweet.image;
 
   return (
     <>
       <div className='border p-3 my-3 Tweet_container__-hXXI'>
         <div className='username'>@{tweet.username}</div>
         <div className='h6'>{tweet.content}</div>
+        {tweet.image && <img src={tweetImage} alt="Tweet Image" className='tweet-image' />}
 
         <div className='d-flex'>
           <div className='mx-2' onClick={() => handleLike(tweet.id)} style={{ cursor: 'pointer' }}>

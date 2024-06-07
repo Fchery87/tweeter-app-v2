@@ -10,7 +10,7 @@ import './TweetsList.module.css';
 function TweetsList() {
   const [tweets, setTweets] = useState(data);
 
-  const addTweet = (newTweet) => {
+  const addTweet = (newTweet, image) => {
     const tweetDoc = {
       content: newTweet,
       username: 'abe123',
@@ -18,6 +18,7 @@ function TweetsList() {
       retweets: 0,
       timestamp: new Date(),
       id: uuidv4(),
+      image: image ? URL.createObjectURL(image) : null, // Create an object URL for the image
     };
 
     setTweets([tweetDoc, ...tweets]);

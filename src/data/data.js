@@ -1,11 +1,12 @@
 export const data = [
     {
         "id": "1",
-        "username": "user123",
-        "content": "Just had the best coffee ever! #coffee #morning",
-        "timestamp": "2024-05-29T08:30:00Z",
-        "likes": 15,
-        "retweets": 2
+        "username": "silverback",
+        "content": "Check out our new logo!",
+        "image": "silverback",
+        "timestamp": "2024-06-07T00:00:00Z",
+        "likes": 1520,
+        "retweets": 920
     },
     {
         "id": "2",
@@ -78,5 +79,85 @@ export const data = [
         "timestamp": "2024-05-29T17:30:00Z",
         "likes": 60,
         "retweets": 12
+    },
+    {
+        "id": "11",
+        "username": "gamer_gal",
+        "content": "Spent the whole night playing the new RPG game. The storyline is just fantastic! #gaming #RPG",
+        "timestamp": "2024-05-29T18:00:00Z",
+        "likes": 110,
+        "retweets": 20
+    },
+    {
+        "id": "12",
+        "username": "photography_fanatic",
+        "content": "Captured some amazing shots of the sunset today. Photography truly makes me appreciate the beauty of nature. #photography #sunset",
+        "timestamp": "2024-05-29T18:45:00Z",
+        "likes": 95,
+        "retweets": 18
+    },
+    {
+        "id": "13",
+        "username": "history_buff",
+        "content": "Visited the local history museum and learned so much about our town's past. It's incredible how much history is around us. #history #museum",
+        "timestamp": "2024-05-29T19:30:00Z",
+        "likes": 40,
+        "retweets": 5
+    },
+    {
+        "id": "14",
+        "username": "science_geek",
+        "content": "Attended a fascinating lecture on quantum physics. The world of science is truly mind-blowing! #science #quantumphysics",
+        "timestamp": "2024-05-29T20:00:00Z",
+        "likes": 85,
+        "retweets": 10
+    },
+    {
+        "id": "15",
+        "username": "fashionista",
+        "content": "Just came back from the fashion week. The designs were stunning! So much inspiration. #fashion #style",
+        "timestamp": "2024-05-29T21:00:00Z",
+        "likes": 150,
+        "retweets": 25
+    },
+    {
+        "id": "16",
+        "username": "health_guru",
+        "content": "Made a delicious and healthy smoothie today. Feeling energized and ready to take on the day! #health #smoothie",
+        "timestamp": "2024-05-29T22:00:00Z",
+        "likes": 70,
+        "retweets": 15
+    },
+    {
+        "id": "17",
+        "username": "coding_enthusiast",
+        "content": "Spent the day learning a new programming language. It's challenging but rewarding! #coding #programming",
+        "timestamp": "2024-05-29T23:00:00Z",
+        "likes": 60,
+        "retweets": 10
+    },
+    {
+        "id": "18",
+        "username": "pet_lover",
+        "content": "Adopted a new puppy today! Can't wait to spend time with my new furry friend. #pets #puppy",
+        "timestamp": "2024-05-30T00:00:00Z",
+        "likes": 130,
+        "retweets": 25
+    },
+    {
+        "id": "19",
+        "username": "entrepreneur_john",
+        "content": "Launched my new startup today! It's been a long journey, but we're finally here. #entrepreneur #startup",
+        "timestamp": "2024-05-30T01:00:00Z",
+        "likes": 180,
+        "retweets": 40
+    },
+    {
+        "id": "20",
+        "username": "home_chef",
+        "content": "Cooked a gourmet meal for my family tonight. There's nothing like sharing a homemade meal with loved ones. #cooking #family",
+        "timestamp": "2024-05-30T02:00:00Z",
+        "likes": 95,
+        "retweets": 20
     }
-]
+];
