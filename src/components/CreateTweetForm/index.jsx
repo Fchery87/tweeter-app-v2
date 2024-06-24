@@ -1,8 +1,5 @@
-// src/components/CreateTweetForm/index.jsx
-
 import { useState, useRef } from "react";
 import PropTypes from "prop-types";
-import styles from "./CreateTweetForm.module.css"; // Assuming you have this CSS module
 import { Button, Form } from "react-bootstrap";
 
 function CreateTweetForm({ addTweet }) {

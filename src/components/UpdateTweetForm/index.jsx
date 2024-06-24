@@ -1,5 +1,3 @@
-// src/components/UpdateTweetForm/index.jsx
-
 import { Modal, Form, Button } from "react-bootstrap";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";

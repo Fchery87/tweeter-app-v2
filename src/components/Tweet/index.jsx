@@ -1,5 +1,3 @@
-// src/components/Tweet/index.jsx
-
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";

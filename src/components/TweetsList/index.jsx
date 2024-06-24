@@ -1,6 +1,4 @@
-// src/components/TweetsList/index.jsx
-
-import { Suspense, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import Tweet from "../Tweet";
 import CreateTweetForm from "../CreateTweetForm";
@@ -72,28 +70,28 @@ function TweetsList() {
     }
   };
 
-  const handleLike = (tweetId) => {
-    console.log("Liking tweet with ID:", tweetId);
-    setTweets(
-      tweets.map((t) => {
-        if (t._id === tweetId) {
-          return { ...t, likes: t.likes + 1 };
-        }
-        return t;
-      })
-    );
+  const handleLike = async (tweetId) => {
+    try {
+      const res = await axios.patch(`${serverUrl}/tweets/${tweetId}/like`);
+      if (res.status === 200) {
+        setTweets(tweets.map((t) => (t._id === tweetId ? res.data : t)));
+      }
+    } catch (error) {
+      console.log("Error liking tweet:", error);
+      alert("Failed to like tweet.");
+    }
   };
 
-  const handleRetweet = (tweetId) => {
-    console.log("Retweeting tweet with ID:", tweetId);
-    setTweets(
-      tweets.map((t) => {
-        if (t._id === tweetId) {
-          return { ...t, retweets: t.retweets + 1 };
-        }
-        return t;
-      })
-    );
+  const handleRetweet = async (tweetId) => {
+    try {
+      const res = await axios.patch(`${serverUrl}/tweets/${tweetId}/retweet`);
+      if (res.status === 200) {
+        setTweets(tweets.map((t) => (t._id === tweetId ? res.data : t)));
+      }
+    } catch (error) {
+      console.log("Error retweeting:", error);
+      alert("Failed to retweet.");
+    }
   };
 
   return (
@@ -101,21 +99,19 @@ function TweetsList() {
       <CreateTweetForm addTweet={addTweet} />
 
       <ErrorBoundary fallback={<div>Error loading Tweets!</div>}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <section>
-            {tweets &&
-              tweets.map((item) => (
-                <Tweet
-                  tweet={item}
-                  key={item._id}
-                  removeTweet={removeTweet}
-                  updateTweet={updateTweet}
-                  handleLike={handleLike}
-                  handleRetweet={handleRetweet}
-                />
-              ))}
-          </section>
-        </Suspense>
+        <section>
+          {tweets &&
+            tweets.map((item) => (
+              <Tweet
+                tweet={item}
+                key={item._id}
+                removeTweet={removeTweet}
+                updateTweet={updateTweet}
+                handleLike={handleLike}
+                handleRetweet={handleRetweet}
+              />
+            ))}
+        </section>
       </ErrorBoundary>
     </div>
   );

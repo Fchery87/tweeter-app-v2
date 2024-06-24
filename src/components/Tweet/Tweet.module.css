@@ -1,5 +1,18 @@
-.container {
+.Tweet_container__-hXXI {
     display: flex;
     flex-direction: column;
     padding: 15px;
-}
+    background-color: #ffffff;
+    border: 1px solid #161748;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .tweet-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  
