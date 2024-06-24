@@ -1,15 +1,16 @@
 import { Container } from 'react-bootstrap';
 import './App.css';
 import TweetsList from './components/TweetsList';
-import logo from './assets/silverback_top_banner.png'; // Import the image
+import silverbackLogo from './assets/silverback_top_banner.png';
 
 function App() {
   return (
     <Container className='d-flex flex-column align-items-center'>
-      <img src={logo} alt="SilverBack Chats" className="logo" />
+      <img src={silverbackLogo} alt="Silverback Chats" className="logo" />
       <TweetsList />
     </Container>
   );
 }
 
 export default App;
+

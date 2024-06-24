@@ -1,99 +1,98 @@
 body {
-    background-color: #00b7ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    min-height: 100vh;
-  }
-  
-  h1 {
-    color: #161748;
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 600px;
-    width: 100%;
-  }
-  
-  .CreateTweetForm_container__-hXXI {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .Tweet_container__-hXXI {
-    width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #161748;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .Tweet_container__-hXXI .username {
-    color: #f95d9b;
-  }
-  
-  .Tweet_container__-hXXI .h6 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #161748;
-  }
-  
-  .Tweet_container__-hXXI .d-flex {
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .Tweet_container__-hXXI .d-flex div {
-    color: #f95d9b;
-    cursor: pointer;
-  }
-  
-  .Tweet_container__-hXXI button {
-    margin-right: 10px;
-  }
-  
-  .custom-button,
-  .custom-button.btn {
-    background-color: #161748 !important;
-    border: none !important;
-    color: #ffffff !important;
-  }
-  
-  .custom-button:hover,
-  .custom-button.btn:hover {
-    background-color: #f95d9b !important;
-  }
-  
-  .Modal_body {
-    background-color: #ffffff;
-  }
-  
-  .Modal_body button {
-    background-color: #161748;
-    border: none;
-    color: #ffffff;
-  }
-  
-  .Modal_body button:hover {
-    background-color: #f95d9b;
-  }
-  
-  .logo {
-    padding-top: 10px;
-    width: 100%; 
-    height: auto; 
-    max-width: 100%;
-    object-fit: contain;
-  }
-  
-  .tweet-image {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 10px;
-  }
-  
+  background-color: #00b7ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #161748;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.CreateTweetForm_container__-hXXI {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.Tweet_container__-hXXI {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #161748;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.Tweet_container__-hXXI .username {
+  color: #f95d9b;
+}
+
+.Tweet_container__-hXXI .h6 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #161748;
+}
+
+.Tweet_container__-hXXI .d-flex {
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.Tweet_container__-hXXI .d-flex div {
+  color: #f95d9b;
+  cursor: pointer;
+}
+
+.Tweet_container__-hXXI button {
+  margin-right: 10px;
+}
+
+.custom-button,
+.custom-button.btn {
+  background-color: #161748 !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.custom-button:hover,
+.custom-button.btn:hover {
+  background-color: #f95d9b !important;
+}
+
+.Modal_body {
+  background-color: #ffffff;
+}
+
+.Modal_body button {
+  background-color: #161748;
+  border: none;
+  color: #ffffff;
+}
+
+.Modal_body button:hover {
+  background-color: #f95d9b;
+}
+
+.logo {
+  padding-top: 10px;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.tweet-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}

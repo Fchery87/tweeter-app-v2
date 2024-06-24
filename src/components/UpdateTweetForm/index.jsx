@@ -1,33 +1,36 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Modal, Form, Button } from 'react-bootstrap';
-import { IoMdClose } from 'react-icons/io';
+// src/components/UpdateTweetForm/index.jsx
 
-function UpdateTweetForm({ tweet, setShowModal, updateTweet }) {
+import { Modal, Form, Button } from "react-bootstrap";
+import { IoMdClose } from "react-icons/io";
+import { useState } from "react";
+import PropTypes from "prop-types";
+
+function UpdateTweetForm({ onClose, tweet, updateTweet }) {
   const [newTweetContent, setNewTweetContent] = useState(tweet.content);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateTweet(tweet.id, newTweetContent);
-    setShowModal(false);
+    updateTweet(tweet._id, newTweetContent);
+    onClose();
   };
 
   return (
-    <div className='Modal_body'>
+    <div className="Modal_body">
       <Modal.Dialog style={{ minWidth: '500px' }}>
-        <IoMdClose className='m-2' onClick={() => setShowModal(false)} />
-
+        <div>
+          <IoMdClose onClick={onClose} />
+        </div>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Control
-              type='text'
+              className="mb-4"
+              type="text"
+              name="content"
+              id="content"
               value={newTweetContent}
               onChange={(e) => setNewTweetContent(e.target.value)}
             />
-
-            <Button type='submit' variant='success' className='mt-2 custom-button'>
-              Save
-            </Button>
+            <Button type="submit" className="custom-button">Update</Button>
           </Form>
         </Modal.Body>
       </Modal.Dialog>
@@ -37,7 +40,7 @@ function UpdateTweetForm({ tweet, setShowModal, updateTweet }) {
 
 UpdateTweetForm.propTypes = {
   tweet: PropTypes.object,
-  setShowModal: PropTypes.func,
+  onClose: PropTypes.func,
   updateTweet: PropTypes.func,
 };
 
