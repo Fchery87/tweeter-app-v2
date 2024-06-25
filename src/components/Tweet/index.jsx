@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
+import { format } from "date-fns";
 import { FaHeart } from "react-icons/fa";
 import { LiaRetweetSolid } from "react-icons/lia";
 import Button from "react-bootstrap/Button";
@@ -8,6 +9,8 @@ import UpdateTweetForm from "../UpdateTweetForm";
 
 function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
   const [showModal, setShowModal] = useState(false);
+
+  const formattedDate = format(new Date(tweet.createdAt), "MMM d, yyyy");
 
   return (
     <>
@@ -18,7 +21,9 @@ function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
         )}
 
       <div className="Tweet_container__-hXXI">
-        <div className="username">@{tweet.username}</div>
+      <div className="username">
+          @{tweet.username} <span className="date">{formattedDate}</span>
+        </div>
         <div className="h6">{tweet.content}</div>
         {tweet.image && <img src={tweet.image} alt="Tweet Image" className="tweet-image" />}
 

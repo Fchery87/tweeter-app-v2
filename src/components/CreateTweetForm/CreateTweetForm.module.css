@@ -1,27 +1,10 @@
 .container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .fileInputContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .fileInputLabel {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    color: #161748;
-    font-weight: bold;
-  }
-  
-  .fileInputLabel span {
-    margin-left: 8px;
-  }
-  
-  .fileInput {
-    display: none;
-  }
-  
+  display: flex;
+  flex-direction: column;
+}
+
+.options-container {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+}
