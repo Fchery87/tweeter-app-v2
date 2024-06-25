@@ -1,45 +1,39 @@
-import { Modal, Form, Button } from "react-bootstrap";
-import { IoMdClose } from "react-icons/io";
-import { useState } from "react";
 import PropTypes from "prop-types";
+import { useState } from "react";
+import { Form, Button } from "react-bootstrap";
 
-function UpdateTweetForm({ onClose, tweet, updateTweet }) {
-  const [newTweetContent, setNewTweetContent] = useState(tweet.content);
+function UpdateTweetForm({ tweet, updateTweet, onClose }) {
+  const [newContent, setNewContent] = useState(tweet.content);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateTweet(tweet._id, newTweetContent);
+    await updateTweet(tweet._id, newContent);
     onClose();
   };
 
   return (
-    <div className="Modal_body">
-      <Modal.Dialog style={{ minWidth: '500px' }}>
-        <div>
-          <IoMdClose onClick={onClose} />
-        </div>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Control
-              className="mb-4"
-              type="text"
-              name="content"
-              id="content"
-              value={newTweetContent}
-              onChange={(e) => setNewTweetContent(e.target.value)}
-            />
-            <Button type="submit" className="custom-button">Update</Button>
-          </Form>
-        </Modal.Body>
-      </Modal.Dialog>
-    </div>
+    <Form onSubmit={handleSubmit} className="mt-2">
+      <Form.Group>
+        <Form.Control
+          type="text"
+          value={newContent}
+          onChange={(e) => setNewContent(e.target.value)}
+        />
+      </Form.Group>
+      <Button type="submit" className="mt-2" variant="primary">
+        Update
+      </Button>
+      <Button onClick={onClose} className="mt-2 ml-2" variant="secondary">
+        Cancel
+      </Button>
+    </Form>
   );
 }
 
 UpdateTweetForm.propTypes = {
-  tweet: PropTypes.object,
-  onClose: PropTypes.func,
-  updateTweet: PropTypes.func,
+  tweet: PropTypes.object.isRequired,
+  updateTweet: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default UpdateTweetForm;
