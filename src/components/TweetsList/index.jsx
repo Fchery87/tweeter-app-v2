@@ -1,5 +1,3 @@
-// src/components/TweetsList/index.jsx
-
 import { Suspense, useState, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import Tweet from "../Tweet";
@@ -29,11 +27,12 @@ function TweetsList() {
     fetchData();
   }, []);
 
-  const addTweet = async (newTweet) => {
+  const addTweet = async (formData) => {
     try {
-      const res = await axios.post(`${serverUrl}/tweets`, {
-        newTweet,
-        username: "hush123",
+      const res = await axios.post(`${serverUrl}/tweets`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
       console.log("Added tweet:", res.data);
       setTweets([res.data, ...tweets]);
@@ -72,28 +71,36 @@ function TweetsList() {
     }
   };
 
-  const handleLike = (tweetId) => {
-    console.log("Liking tweet with ID:", tweetId);
-    setTweets(
-      tweets.map((t) => {
-        if (t._id === tweetId) {
-          return { ...t, likes: t.likes + 1 };
-        }
-        return t;
-      })
-    );
+  const handleLike = async (tweetId) => {
+    try {
+      const res = await axios.patch(`${serverUrl}/tweets/${tweetId}/like`);
+      if (res.status === 200) {
+        console.log("Liked tweet:", res.data);
+        setTweets(
+          tweets.map((t) => (t._id === tweetId ? res.data : t))
+        );
+      } else {
+        throw Error("Error liking tweet");
+      }
+    } catch (error) {
+      console.log("Error liking tweet:", error);
+    }
   };
 
-  const handleRetweet = (tweetId) => {
-    console.log("Retweeting tweet with ID:", tweetId);
-    setTweets(
-      tweets.map((t) => {
-        if (t._id === tweetId) {
-          return { ...t, retweets: t.retweets + 1 };
-        }
-        return t;
-      })
-    );
+  const handleRetweet = async (tweetId) => {
+    try {
+      const res = await axios.patch(`${serverUrl}/tweets/${tweetId}/retweet`);
+      if (res.status === 200) {
+        console.log("Retweeted tweet:", res.data);
+        setTweets(
+          tweets.map((t) => (t._id === tweetId ? res.data : t))
+        );
+      } else {
+        throw Error("Error retweeting");
+      }
+    } catch (error) {
+      console.log("Error retweeting:", error);
+    }
   };
 
   return (

@@ -17,7 +17,7 @@ function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
         @{tweet.username} <span className="date">{formattedDate}</span>
       </div>
       <div className="h6">{tweet.content}</div>
-      {tweet.image && <img src={tweet.image} alt="Tweet Image" className="tweet-image" />}
+      {tweet.image && <img src={`http://localhost:4000/${tweet.image}`} alt="Tweet Image" className="tweet-image" />} {/* Adjust URL if needed */}
 
       <div className="d-flex">
         <div className="mx-2" onClick={() => handleLike(tweet._id)} style={{ cursor: 'pointer' }}>

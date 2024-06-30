@@ -4,6 +4,7 @@ import { Button, Form } from "react-bootstrap";
 
 function CreateTweetForm({ addTweet }) {
   const [content, setContent] = useState("");
+  const [image, setImage] = useState(null);
   const inputRef = useRef(null);
 
   const handleSubmit = async (e) => {
@@ -13,8 +14,16 @@ function CreateTweetForm({ addTweet }) {
       return;
     }
 
-    await addTweet(content);
+    const formData = new FormData();
+    formData.append("content", content);
+    formData.append("username", "hush123"); // Hardcoded username for now
+    if (image) {
+      formData.append("image", image);
+    }
+
+    await addTweet(formData);
     setContent("");
+    setImage(null);
   };
 
   return (
@@ -31,6 +40,14 @@ function CreateTweetForm({ addTweet }) {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         ref={inputRef}
+      />
+
+      <Form.Control
+        className="mb-4"
+        type="file"
+        name="image"
+        id="image"
+        onChange={(e) => setImage(e.target.files[0])}
       />
 
       <Button type="submit" className="custom-button">Tweet</Button>
