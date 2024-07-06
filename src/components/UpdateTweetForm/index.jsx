@@ -1,6 +1,5 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 function UpdateTweetForm({ tweet, updateTweet, onClose }) {
   const [newContent, setNewContent] = useState(tweet.content);
@@ -12,21 +11,35 @@ function UpdateTweetForm({ tweet, updateTweet, onClose }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="mt-2">
-      <Form.Group>
-        <Form.Control
-          type="text"
-          value={newContent}
-          onChange={(e) => setNewContent(e.target.value)}
-        />
-      </Form.Group>
-      <Button type="submit" className="mt-2" variant="primary">
-        Update
-      </Button>
-      <Button onClick={onClose} className="mt-2 ml-2" variant="secondary">
-        Cancel
-      </Button>
-    </Form>
+    <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow-md mt-4">
+      <label htmlFor="newContent" className="block text-lg font-medium text-gray-700">
+        Edit your tweet
+      </label>
+
+      <textarea
+        id="newContent"
+        className="mb-4 w-full p-2 border border-gray-300 rounded resize-none"
+        rows="6"
+        value={newContent}
+        onChange={(e) => setNewContent(e.target.value)}
+      />
+
+      <div className="flex justify-end gap-2">
+        <button
+          type="button"
+          className="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600"
+          onClick={onClose}
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
+        >
+          Update
+        </button>
+      </div>
+    </form>
   );
 }
 

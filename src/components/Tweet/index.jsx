@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { format } from "date-fns";
 import { FaHeart } from "react-icons/fa";
 import { LiaRetweetSolid } from "react-icons/lia";
-import Button from "react-bootstrap/Button";
 import UpdateTweetForm from "../UpdateTweetForm";
 
 function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
@@ -12,37 +11,54 @@ function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
   const formattedDate = format(new Date(tweet.createdAt), "MMM d, yyyy");
 
   return (
-    <div className="Tweet_container__-hXXI">
-      <div className="username">
-        @{tweet.username} <span className="date">{formattedDate}</span>
-      </div>
-      <div className="h6">{tweet.content}</div>
-      {tweet.image && <img src={`http://localhost:4000/${tweet.image}`} alt="Tweet Image" className="tweet-image" />} {/* Adjust URL if needed */}
-
-      <div className="d-flex">
-        <div className="mx-2" onClick={() => handleLike(tweet._id)} style={{ cursor: 'pointer' }}>
-          <FaHeart /> {tweet.likes}
-        </div>
-        <div onClick={() => handleRetweet(tweet._id)} style={{ cursor: 'pointer' }}>
-          <LiaRetweetSolid size={22} /> {tweet.retweets}
-        </div>
+    <div className="max-w-2xl px-8 py-4 bg-white rounded-lg shadow-md dark:bg-gray-800 mt-4">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-light text-gray-600 dark:text-gray-400">{formattedDate}</span>
       </div>
 
       <div className="mt-2">
-        <Button
-          variant="danger"
-          className="mx-2 custom-button"
-          onClick={() => removeTweet(tweet._id)}
-        >
-          Delete
-        </Button>
-        <Button
-          variant="info"
-          className="mx-2 custom-button"
-          onClick={() => setIsEditing(!isEditing)}
-        >
-          {isEditing ? "Close" : "Update"}
-        </Button>
+        <p className="text-xl font-bold text-gray-700 dark:text-white">{tweet.content}</p>
+        {tweet.image && (
+          <img
+            src={`http://localhost:4000/${tweet.image}`}
+            alt="Tweet Image"
+            className="mt-2 rounded"
+          />
+        )}
+      </div>
+
+      <div className="flex items-center justify-between mt-4">
+        <div className="flex space-x-4">
+          <div
+            className="flex items-center cursor-pointer text-orange-600 dark:text-orange-400"
+            onClick={() => handleLike(tweet._id)}
+          >
+            <FaHeart /> {tweet.likes}
+          </div>
+          <div
+            className="flex items-center cursor-pointer text-orange-600 dark:text-orange-400"
+            onClick={() => handleRetweet(tweet._id)}
+          >
+            <LiaRetweetSolid size={22} /> {tweet.retweets}
+          </div>
+        </div>
+
+        <div className="flex items-center">
+          <div className="flex space-x-2">
+            <button
+              className="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={() => setIsEditing(!isEditing)}
+            >
+              {isEditing ? "Close" : "Edit"}
+            </button>
+            <button
+              className="inline-block px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={() => removeTweet(tweet._id)}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
 
       {isEditing && (
@@ -57,11 +73,11 @@ function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
 }
 
 Tweet.propTypes = {
-  tweet: PropTypes.object,
-  removeTweet: PropTypes.func,
-  updateTweet: PropTypes.func,
-  handleLike: PropTypes.func,
-  handleRetweet: PropTypes.func,
+  tweet: PropTypes.object.isRequired,
+  removeTweet: PropTypes.func.isRequired,
+  updateTweet: PropTypes.func.isRequired,
+  handleLike: PropTypes.func.isRequired,
+  handleRetweet: PropTypes.func.isRequired,
 };
 
 export default Tweet;

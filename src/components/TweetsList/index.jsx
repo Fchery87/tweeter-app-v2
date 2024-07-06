@@ -3,7 +3,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import Tweet from "../Tweet";
 import CreateTweetForm from "../CreateTweetForm";
 import axios from "axios";
-import "./TweetsList.module.css";
 
 const serverUrl =
   import.meta.env.MODE === "development"
@@ -109,7 +108,7 @@ function TweetsList() {
 
       <ErrorBoundary fallback={<div>Error loading Tweets!</div>}>
         <Suspense fallback={<div>Loading...</div>}>
-          <section>
+          <section className="space-y-4">
             {tweets &&
               tweets.map((item) => (
                 <Tweet
