@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from '../assets/whats_the_word-rmbg.png'; // Make sure to place the logo in the assets folder
+import '../Header.css'; // Ensure this file is created and the path is correct
 
 function Header() {
   return (
@@ -29,7 +31,7 @@ function Header() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">What's The Word?</a>
+        <img src={logo} alt="ChitChat Logo" className="custom-logo" /> {/* Using custom CSS */}
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

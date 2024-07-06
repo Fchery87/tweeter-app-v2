@@ -3,6 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import Tweet from "../Tweet";
 import CreateTweetForm from "../CreateTweetForm";
 import axios from "axios";
+import "./TweetsList.module.css";
 
 const serverUrl =
   import.meta.env.MODE === "development"
@@ -10,16 +11,15 @@ const serverUrl =
     : "https://twitter-backend-zr6i.onrender.com";
 
 function TweetsList() {
-  const [tweets, setTweets] = useState(null);
+  const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`${serverUrl}/tweets`);
-        console.log("Fetched tweets:", res.data);
-        setTweets([...res.data]);
+        setTweets(res.data);
       } catch (error) {
-        console.log("Error fetching tweets:", error);
+        console.error("Error fetching tweets:", error);
       }
     };
 
@@ -33,10 +33,9 @@ function TweetsList() {
           'Content-Type': 'multipart/form-data'
         }
       });
-      console.log("Added tweet:", res.data);
-      setTweets([res.data, ...tweets]);
+      setTweets([res.data, ...tweets]); // Add new tweet to the top of the list
     } catch (error) {
-      console.log("Error adding tweet:", error);
+      console.error("Error adding tweet:", error);
     }
   };
 
@@ -44,13 +43,12 @@ function TweetsList() {
     try {
       const res = await axios.delete(`${serverUrl}/tweets/${tweetId}`);
       if (res.status === 200) {
-        console.log("Deleted tweet with ID:", tweetId);
         setTweets(tweets.filter((t) => t._id !== tweetId));
       } else {
-        throw Error("Error deleting tweet");
+        throw new Error("Error deleting tweet");
       }
     } catch (error) {
-      console.log("Error deleting tweet:", error);
+      console.error("Error deleting tweet:", error);
     }
   };
 
@@ -58,15 +56,12 @@ function TweetsList() {
     try {
       const res = await axios.put(`${serverUrl}/tweets/${tweetId}`, { newTweetContent });
       if (res.status === 200) {
-        console.log("Updated tweet:", res.data);
-        setTweets(
-          tweets.map((t) => (t._id === tweetId ? res.data : t))
-        );
+        setTweets(tweets.map((t) => (t._id === tweetId ? res.data : t)));
       } else {
-        throw Error("Error updating tweet");
+        throw new Error("Error updating tweet");
       }
     } catch (error) {
-      console.log("Error updating tweet:", error);
+      console.error("Error updating tweet:", error);
     }
   };
 
@@ -74,15 +69,12 @@ function TweetsList() {
     try {
       const res = await axios.patch(`${serverUrl}/tweets/${tweetId}/like`);
       if (res.status === 200) {
-        console.log("Liked tweet:", res.data);
-        setTweets(
-          tweets.map((t) => (t._id === tweetId ? res.data : t))
-        );
+        setTweets(tweets.map((t) => (t._id === tweetId ? res.data : t)));
       } else {
-        throw Error("Error liking tweet");
+        throw new Error("Error liking tweet");
       }
     } catch (error) {
-      console.log("Error liking tweet:", error);
+      console.error("Error liking tweet:", error);
     }
   };
 
@@ -90,15 +82,12 @@ function TweetsList() {
     try {
       const res = await axios.patch(`${serverUrl}/tweets/${tweetId}/retweet`);
       if (res.status === 200) {
-        console.log("Retweeted tweet:", res.data);
-        setTweets(
-          tweets.map((t) => (t._id === tweetId ? res.data : t))
-        );
+        setTweets(tweets.map((t) => (t._id === tweetId ? res.data : t)));
       } else {
-        throw Error("Error retweeting");
+        throw new Error("Error retweeting");
       }
     } catch (error) {
-      console.log("Error retweeting:", error);
+      console.error("Error retweeting:", error);
     }
   };
 
@@ -108,18 +97,17 @@ function TweetsList() {
 
       <ErrorBoundary fallback={<div>Error loading Tweets!</div>}>
         <Suspense fallback={<div>Loading...</div>}>
-          <section className="space-y-4">
-            {tweets &&
-              tweets.map((item) => (
-                <Tweet
-                  tweet={item}
-                  key={item._id}
-                  removeTweet={removeTweet}
-                  updateTweet={updateTweet}
-                  handleLike={handleLike}
-                  handleRetweet={handleRetweet}
-                />
-              ))}
+          <section>
+            {tweets.map((item) => (
+              <Tweet
+                tweet={item}
+                key={item._id}
+                removeTweet={removeTweet}
+                updateTweet={updateTweet}
+                handleLike={handleLike}
+                handleRetweet={handleRetweet}
+              />
+            ))}
           </section>
         </Suspense>
       </ErrorBoundary>

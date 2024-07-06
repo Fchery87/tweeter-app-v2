@@ -30,13 +30,13 @@ function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
       <div className="flex items-center justify-between mt-4">
         <div className="flex space-x-4">
           <div
-            className="flex items-center cursor-pointer text-orange-600 dark:text-orange-400"
+            className="flex items-center cursor-pointer text-purple-600 dark:text-purple-400"
             onClick={() => handleLike(tweet._id)}
           >
             <FaHeart /> {tweet.likes}
           </div>
           <div
-            className="flex items-center cursor-pointer text-orange-600 dark:text-orange-400"
+            className="flex items-center cursor-pointer text-purple-600 dark:text-purple-400"
             onClick={() => handleRetweet(tweet._id)}
           >
             <LiaRetweetSolid size={22} /> {tweet.retweets}

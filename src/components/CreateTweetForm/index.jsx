@@ -87,7 +87,7 @@ function CreateTweetForm({ addTweet }) {
             type="submit"
             className="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
           >
-            Add
+            Submit
           </button>
         </div>
       </div>
