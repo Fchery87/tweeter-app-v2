@@ -20,7 +20,7 @@ function Tweet({ tweet, removeTweet, updateTweet, handleLike, handleRetweet }) {
         <p className="text-xl font-bold text-gray-700 dark:text-white">{tweet.content}</p>
         {tweet.image && (
           <img
-            src={`http://localhost:4000/${tweet.image}`}
+            src={`https://twitter-backend-zr6i.onrender.com/${tweet.image}`}
             alt="Tweet Image"
             className="mt-2 rounded"
           />
