@@ -1,3 +1,4 @@
+// src/components/TweetsList/index.jsx
 import { Suspense, useState, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import Tweet from "../Tweet";
@@ -8,7 +9,7 @@ import "./TweetsList.module.css";
 const serverUrl =
   import.meta.env.MODE === "development"
     ? "http://localhost:4000"
-    : "https://twitter-backend-zr6i.onrender.com";
+    : "https://twitter-backend-zr6i.onrender.com"; // Ensure this URL is correct
 
 function TweetsList() {
   const [tweets, setTweets] = useState([]);
@@ -94,7 +95,6 @@ function TweetsList() {
   return (
     <div className="mt-4">
       <CreateTweetForm addTweet={addTweet} />
-
       <ErrorBoundary fallback={<div>Error loading Tweets!</div>}>
         <Suspense fallback={<div>Loading...</div>}>
           <section>
